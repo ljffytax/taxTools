@@ -1,19 +1,19 @@
-Attribute VB_Name = "Ä£¿é1"
-'ÓÃÓÚ¶Ô¸¶ÄÉË°ÈËÅúÁ¿²¹½É¸öÈËËùµÃË°£¬¿ÉÒÔ¸ù¾İÒ»¸öÄ£°åÎÄ¼şÓëÖ¸¶¨µÄ
-'ÔÂ·İÇø¼ä½øĞĞ×Ô¶¯Éú³ÉÉê±¨±í
-'Õä°®ÉúÃü£¬Ô¶Àë½ğË°Èı
-' lianjie 2017-06-28£¬2018-01-19,2018-07-02,2018-10-29,2018-11-23
+Attribute VB_Name = "æ¨¡å—1"
+'ç”¨äºå¯¹ä»˜çº³ç¨äººæ‰¹é‡è¡¥ç¼´ä¸ªäººæ‰€å¾—ç¨ï¼Œå¯ä»¥æ ¹æ®ä¸€ä¸ªæ¨¡æ¿æ–‡ä»¶ä¸æŒ‡å®šçš„
+'æœˆä»½åŒºé—´è¿›è¡Œè‡ªåŠ¨ç”Ÿæˆç”³æŠ¥è¡¨
+'ççˆ±ç”Ÿå‘½ï¼Œè¿œç¦»é‡‘ç¨ä¸‰
+' lianjie 2017-06-28ï¼Œ2018-01-19,2018-07-02,2018-10-29,2018-11-23
 '2018-12-28,2019-03-05,2019-08-25
 
 
-'È«¾Ö±äÁ¿£¬ÓÃÓÚÎÄ¼şÃûÓëÉê±¨ÔÂ·İµÄ´æ´¢ ¸ñÊ½£º2015-05
+'å…¨å±€å˜é‡ï¼Œç”¨äºæ–‡ä»¶åä¸ç”³æŠ¥æœˆä»½çš„å­˜å‚¨ æ ¼å¼ï¼š2015-05
 Dim mouths(0 To 100) As String
-Dim pth As String 'µ±Ç°ÔËĞĞµÄÂ·¾¶
+Dim pth As String 'å½“å‰è¿è¡Œçš„è·¯å¾„
 
 
 Sub main_fuck()
 
-    '¶¨Òå±äÁ¿
+    'å®šä¹‰å˜é‡
     Dim MyFile As String, WJM As String, GZBM As String
     Dim XLapp As New Excel.Application
     Dim Xlbook As Excel.Workbook
@@ -21,17 +21,17 @@ Sub main_fuck()
     Dim tmp_m() As String
     Dim fmth As String
     Dim lmth As String
-    Dim fday As String 'Ò»¸öÔÂµÄ¿ªÍ·Ò»Ìì
-    Dim lday As String 'Ò»¸öÔÂµÄ×îºóÒ»Ìì
+    Dim fday As String 'ä¸€ä¸ªæœˆçš„å¼€å¤´ä¸€å¤©
+    Dim lday As String 'ä¸€ä¸ªæœˆçš„æœ€åä¸€å¤©
     Dim n As Integer
     Dim fdate_rg As String
     Dim ldate_rg As String
-    Dim jcfy_rg As String '¼õ³ı·ÑÓÃ
+    Dim jcfy_rg As String 'å‡é™¤è´¹ç”¨
     Dim max_row As Integer
     Dim title As String
         
-    '²ÎÊıÉèÖÃ
-    ChDir (ThisWorkbook.Path) 'ÇĞ»»»Øµ±Ç°Ä¿Â¼
+    'å‚æ•°è®¾ç½®
+    ChDir (ThisWorkbook.Path) 'åˆ‡æ¢å›å½“å‰ç›®å½•
     pth = ThisWorkbook.Path
     fdate_rg = "H11:H"
     ldate_rg = "I11:I"
@@ -40,31 +40,31 @@ Sub main_fuck()
     fmth = ""
     lmth = ""
     max_row = 10
-    TABLETITLE = "¿Û½É¸öÈËËùµÃË°Éê±¨±í£¨ÊÊÓÃÓÚ×ÛºÏËùµÃÔ¤¿ÛÔ¤½É£©"
+    TABLETITLE = "æ‰£ç¼´ä¸ªäººæ‰€å¾—ç¨ç”³æŠ¥è¡¨ï¼ˆé€‚ç”¨äºç»¼åˆæ‰€å¾—é¢„æ‰£é¢„ç¼´ï¼‰"
     
     m_file = Sheets("Sheet1").cells(2, 1)
     fmth = Sheets("Sheet1").cells(2, 2)
     lmth = Sheets("Sheet1").cells(2, 3)
     If (m_file = "" Or fmth = "" Or lmth = "") Then
-       res = MsgBox("ÇëÌîĞ´ÕıÈ·µÄ²ÎÊı", vbOKOnly)
+       res = MsgBox("è¯·å¡«å†™æ­£ç¡®çš„å‚æ•°", vbOKOnly)
        Exit Sub
     End If
     If is_illegal(fmth, lmth) Then
-       res = MsgBox("ÇëÌîĞ´ÕıÈ·µÄ²ÎÊı", vbOKOnly)
+       res = MsgBox("è¯·å¡«å†™æ­£ç¡®çš„å‚æ•°", vbOKOnly)
        Exit Sub
     End If
     
     If Dir(pth & "\" & m_file, vbDirectory) <> Empty Then
-        'ÏÈÉú³ÉÒ»¶ÑÎÄ¼ş
+        'å…ˆç”Ÿæˆä¸€å †æ–‡ä»¶
         Call make_many_files(pth & "\" & m_file, fmth, lmth)
     Else
-        res = MsgBox("Ä£°åÎÄ¼ş²»´æÔÚ!", vbOKOnly)
+        res = MsgBox("æ¨¡æ¿æ–‡ä»¶ä¸å­˜åœ¨!", vbOKOnly)
         Exit Sub
     End If
-    Application.DisplayAlerts = False 'È¡Ïû¸²¸Ç±£´æÊ±µÄÌáÊ¾
-    Application.ScreenUpdating = False 'È¡ÏûÆÁÄ»Ë¢ĞÂ
+    Application.DisplayAlerts = False 'å–æ¶ˆè¦†ç›–ä¿å­˜æ—¶çš„æç¤º
+    Application.ScreenUpdating = False 'å–æ¶ˆå±å¹•åˆ·æ–°
     WJM = m_file
-    GZBM = "¿Û½É¸öÈËËùµÃË°±¨¸æ±í"
+    GZBM = "æ‰£ç¼´ä¸ªäººæ‰€å¾—ç¨æŠ¥å‘Šè¡¨"
     MyFile = ThisWorkbook.Path & "\" & WJM
     Set Xlbook = XLapp.Workbooks.Open(MyFile)
     title = Xlbook.Sheets(1).cells(1, 1)
@@ -73,21 +73,21 @@ Sub main_fuck()
     Application.ScreenUpdating = True
     Application.DisplayAlerts = True
     
-    '2019-01-01¼°ÒÔºóµÄ±í¸ñ
+    '2019-01-01åŠä»¥åçš„è¡¨æ ¼
     If title = TABLETITLE Then
         For n = 0 To 100
             If mouths(n) = "" Then
                 Exit For
             End If
-            'ÓĞ¹ØĞÅÏ¢ÉèÖÃ
-            Application.DisplayAlerts = False 'È¡Ïû¸²¸Ç±£´æÊ±µÄÌáÊ¾
-            Application.ScreenUpdating = False 'È¡ÏûÆÁÄ»Ë¢ĞÂ
+            'æœ‰å…³ä¿¡æ¯è®¾ç½®
+            Application.DisplayAlerts = False 'å–æ¶ˆè¦†ç›–ä¿å­˜æ—¶çš„æç¤º
+            Application.ScreenUpdating = False 'å–æ¶ˆå±å¹•åˆ·æ–°
             WJM = mouths(n)
-            GZBM = "¿Û½É¸öÈËËùµÃË°Éê±¨±í£¨ÊÊÓÃÓÚ×ÛºÏËùµÃÔ¤¿ÛÔ¤½É£©"
+            GZBM = "æ‰£ç¼´ä¸ªäººæ‰€å¾—ç¨ç”³æŠ¥è¡¨ï¼ˆé€‚ç”¨äºç»¼åˆæ‰€å¾—é¢„æ‰£é¢„ç¼´ï¼‰"
             MyFile = ThisWorkbook.Path & "\" & WJM & ".xls"
             Set Xlbook = XLapp.Workbooks.Open(MyFile)
             If Xlbook.Sheets(1).Name <> GZBM Then
-                res = MsgBox("±í¸ñÄ£°åÓĞÎÊÌâ°¡!", vbOKOnly)
+                res = MsgBox("è¡¨æ ¼æ¨¡æ¿æœ‰é—®é¢˜å•Š!", vbOKOnly)
                 Xlbook.Close True
                 Set XLapp = Nothing
                 Application.ScreenUpdating = True
@@ -95,7 +95,7 @@ Sub main_fuck()
                 Exit Sub
             End If
             If Application.Version > 11 Then 'execl 2003
-                Xlbook.CheckCompatibility = False '¸ÃËÀµÄ¼æÈİĞÔ¼ì²é
+                Xlbook.CheckCompatibility = False 'è¯¥æ­»çš„å…¼å®¹æ€§æ£€æŸ¥
             End If
             XLapp.Visible = False
             fday = mouths(n) & "-01"
@@ -103,22 +103,22 @@ Sub main_fuck()
             If tmp_m(1) = "01" Or tmp_m(1) = "03" Or tmp_m(1) = "05" Or tmp_m(1) = "07" Or _
             tmp_m(1) = "08" Or tmp_m(1) = "10" Or tmp_m(1) = "12" Then
                 lday = mouths(n) & "-31"
-            ElseIf tmp_m(1) = "02" Then '2ÔÂ·İ£¬¿´ÊÇ²»ÊÇÈóÄê
-                If tmp_m(0) Mod 4 = 0 And tmp_m(0) Mod 100 <> 0 Then 'ÈòÄê
+            ElseIf tmp_m(1) = "02" Then '2æœˆä»½ï¼Œçœ‹æ˜¯ä¸æ˜¯æ¶¦å¹´
+                If tmp_m(0) Mod 4 = 0 And tmp_m(0) Mod 100 <> 0 Then 'é—°å¹´
                     lday = mouths(n) & "-29"
                 Else
-                    If tmp_m(0) Mod 100 = 0 And tmp_m(0) Mod 400 = 0 Then 'ÈòÄê
+                    If tmp_m(0) Mod 100 = 0 And tmp_m(0) Mod 400 = 0 Then 'é—°å¹´
                         lday = mouths(n) & "-29"
-                    Else '·ÇÈòÄê
+                    Else 'éé—°å¹´
                         lday = mouths(n) & "-28"
                     End If
                 End If
-            Else 'Ê£ÏÂµÄÊÇĞ¡ÔÂÁË
+            Else 'å‰©ä¸‹çš„æ˜¯å°æœˆäº†
                     lday = mouths(n) & "-30"
             End If
             With Xlbook.Sheets(GZBM)
-                .Range("M3") = fday '°ÑÔÂÍ·Ò»ÌìĞ´Èë¶ÔÓ¦µ¥Ôª¸ñ
-                .Range("R3") = lday '°ÑÔÂÎ´Ò»ÌìĞ´Èë¶ÔÓ¦µ¥Ôª¸ñ
+                .Range("M3") = fday 'æŠŠæœˆå¤´ä¸€å¤©å†™å…¥å¯¹åº”å•å…ƒæ ¼
+                .Range("R3") = lday 'æŠŠæœˆæœªä¸€å¤©å†™å…¥å¯¹åº”å•å…ƒæ ¼
             End With
             Xlbook.Close True
             Set Xlbook = Nothing
@@ -127,20 +127,20 @@ Sub main_fuck()
             Application.DisplayAlerts = True
         Next n
     Else
-        '´¦Àí2019-01-01ÒÔÇ°µÄ±í¸ñ
+        'å¤„ç†2019-01-01ä»¥å‰çš„è¡¨æ ¼
         For n = 0 To 100
             If mouths(n) = "" Then
                 Exit For
             End If
-            'ÓĞ¹ØĞÅÏ¢ÉèÖÃ
-            Application.DisplayAlerts = False 'È¡Ïû¸²¸Ç±£´æÊ±µÄÌáÊ¾
-            Application.ScreenUpdating = False 'È¡ÏûÆÁÄ»Ë¢ĞÂ
+            'æœ‰å…³ä¿¡æ¯è®¾ç½®
+            Application.DisplayAlerts = False 'å–æ¶ˆè¦†ç›–ä¿å­˜æ—¶çš„æç¤º
+            Application.ScreenUpdating = False 'å–æ¶ˆå±å¹•åˆ·æ–°
             WJM = mouths(n)
-            GZBM = "¿Û½É¸öÈËËùµÃË°±¨¸æ±í"
+            GZBM = "æ‰£ç¼´ä¸ªäººæ‰€å¾—ç¨æŠ¥å‘Šè¡¨"
             MyFile = ThisWorkbook.Path & "\" & WJM & ".xls"
             Set Xlbook = XLapp.Workbooks.Open(MyFile)
             If Xlbook.Sheets(1).Name <> GZBM Then
-                res = MsgBox("±í¸ñÄ£°åÓĞÎÊÌâ°¡!", vbOKOnly)
+                res = MsgBox("è¡¨æ ¼æ¨¡æ¿æœ‰é—®é¢˜å•Š!", vbOKOnly)
                 Xlbook.Close True
                 Set XLapp = Nothing
                 Application.ScreenUpdating = True
@@ -148,7 +148,7 @@ Sub main_fuck()
                 Exit Sub
             End If
             If Application.Version > 11 Then 'execl 2003
-                Xlbook.CheckCompatibility = False '¸ÃËÀµÄ¼æÈİĞÔ¼ì²é
+                Xlbook.CheckCompatibility = False 'è¯¥æ­»çš„å…¼å®¹æ€§æ£€æŸ¥
             End If
             XLapp.Visible = False
             fday = mouths(n) & "-01"
@@ -156,17 +156,17 @@ Sub main_fuck()
             If tmp_m(1) = "01" Or tmp_m(1) = "03" Or tmp_m(1) = "05" Or tmp_m(1) = "07" Or _
             tmp_m(1) = "08" Or tmp_m(1) = "10" Or tmp_m(1) = "12" Then
                 lday = mouths(n) & "-31"
-            ElseIf tmp_m(1) = "02" Then '2ÔÂ·İ£¬¿´ÊÇ²»ÊÇÈóÄê
-                If tmp_m(0) Mod 4 = 0 And tmp_m(0) Mod 100 <> 0 Then 'ÈòÄê
+            ElseIf tmp_m(1) = "02" Then '2æœˆä»½ï¼Œçœ‹æ˜¯ä¸æ˜¯æ¶¦å¹´
+                If tmp_m(0) Mod 4 = 0 And tmp_m(0) Mod 100 <> 0 Then 'é—°å¹´
                         lday = mouths(n) & "-29"
                 Else
-                    If tmp_m(0) Mod 100 = 0 And tmp_m(0) Mod 400 = 0 Then 'ÈòÄê
+                    If tmp_m(0) Mod 100 = 0 And tmp_m(0) Mod 400 = 0 Then 'é—°å¹´
                         lday = mouths(n) & "-29"
-                    Else '·ÇÈòÄê
+                    Else 'éé—°å¹´
                         lday = mouths(n) & "-28"
                     End If
                 End If
-            Else 'Ê£ÏÂµÄÊÇĞ¡ÔÂÁË
+            Else 'å‰©ä¸‹çš„æ˜¯å°æœˆäº†
                 lday = mouths(n) & "-30"
             End If
             If n = 0 Then
@@ -180,22 +180,22 @@ Sub main_fuck()
             End If
             If max_row > 11 Then
                 With Xlbook.Sheets(GZBM)
-                    .Range("M3") = fday '°ÑÔÂÍ·Ò»ÌìĞ´Èë¶ÔÓ¦µ¥Ôª¸ñ
-                    .Range("P3") = lday '°ÑÔÂÎ´Ò»ÌìĞ´Èë¶ÔÓ¦µ¥Ôª¸ñ
+                    .Range("M3") = fday 'æŠŠæœˆå¤´ä¸€å¤©å†™å…¥å¯¹åº”å•å…ƒæ ¼
+                    .Range("P3") = lday 'æŠŠæœˆæœªä¸€å¤©å†™å…¥å¯¹åº”å•å…ƒæ ¼
                     .Range(fdate_rg) = fday
                     .Range(ldate_rg) = lday
                 End With
                 If fday >= "2018-10-01" Then
                     With Xlbook.Sheets(GZBM)
-                        .Range(jcfy_rg) = 5000 'ĞŞÕı¼õ³ı·ÑÓÃ
+                        .Range(jcfy_rg) = 5000 'ä¿®æ­£å‡é™¤è´¹ç”¨
                     End With
                 Else
                     With Xlbook.Sheets(GZBM)
-                        .Range(jcfy_rg) = 3500 'ĞŞÕı¼õ³ı·ÑÓÃ
+                        .Range(jcfy_rg) = 3500 'ä¿®æ­£å‡é™¤è´¹ç”¨
                     End With
                 End If
             Else
-                res = MsgBox("±í¸ñÄ£°åÀïÃæÊı¾İ²»ÍêÕû!", vbOKOnly)
+                res = MsgBox("è¡¨æ ¼æ¨¡æ¿é‡Œé¢æ•°æ®ä¸å®Œæ•´!", vbOKOnly)
                 Xlbook.Close True
                 Set Xlbook = Nothing
                 Set XLapp = Nothing
@@ -210,14 +210,15 @@ Sub main_fuck()
             Application.DisplayAlerts = True
         Next n
     End If
+    compressFiles()
 End Sub
 
-'¸ù¾İµÚÒ»¸öÔÂÓë×îºóÒ»¸öÔÂÉú³ÉÃ¿Ò»¸öÔÂµÄÎÄ¼ş,ÒÔmain_fileÎªÄ£°å´´½¨¸±±¾
+'æ ¹æ®ç¬¬ä¸€ä¸ªæœˆä¸æœ€åä¸€ä¸ªæœˆç”Ÿæˆæ¯ä¸€ä¸ªæœˆçš„æ–‡ä»¶,ä»¥main_fileä¸ºæ¨¡æ¿åˆ›å»ºå‰¯æœ¬
 'make_many_files("201504.xls", "2015-05", "2017-04")
 Private Function make_many_files(main_file As String, first_mouth As String, last_mouth As String)
     Dim fso As Object
-    Dim y As Integer 'Äê
-    Dim m As Integer 'ÔÂ
+    Dim y As Integer 'å¹´
+    Dim m As Integer 'æœˆ
     Dim n As Integer
     Dim yf As Integer
     Dim yl As Integer
@@ -229,7 +230,7 @@ Private Function make_many_files(main_file As String, first_mouth As String, las
     n = 0
     j = Int(arr1(1))
     
-    For i = Int(arr1(0)) To Int(arr2(0)) 'arr1(0)¿ªÊ¼µÄÄê¶È£¬arr2(0)½áÊøµÄÄê¶È
+    For i = Int(arr1(0)) To Int(arr2(0)) 'arr1(0)å¼€å§‹çš„å¹´åº¦ï¼Œarr2(0)ç»“æŸçš„å¹´åº¦
         Do
             If j < 10 Then
                 mouths(n) = CStr(i) & "-0" & CStr(j)
@@ -261,7 +262,7 @@ Private Function is_illegal(first_mouth As String, last_mouth As String) As Inte
     Dim arr1() As String
     Dim arr2() As String
     arr1() = Split(first_mouth, "-")
-    If Int(arr1(1)) > 12 Then arr1(1) = "12" '·ÀÖ¹ÔÂ·İÌî´í
+    If Int(arr1(1)) > 12 Then arr1(1) = "12" 'é˜²æ­¢æœˆä»½å¡«é”™
     n1 = Int(arr1(0) & arr1(1))
     arr2() = Split(last_mouth, "-")
     If Int(arr2(1)) > 12 Then arr2(1) = "12"
@@ -272,3 +273,39 @@ Private Function is_illegal(first_mouth As String, last_mouth As String) As Inte
         is_illegal = 0
     End If
 End Function
+
+ Sub NewZip(sPath)
+'Create empty Zip File
+'Changed by keepITcool Dec-12-2005
+    If Len(Dir(sPath)) > 0 Then Kill sPath
+    Open sPath For Output As #1
+    Print #1, Chr$(80) & Chr$(75) & Chr$(5) & Chr$(6) & String(18, 0)
+    Close #1
+End Sub
+
+Function bIsBookOpen(ByRef szBookName As String) As Boolean
+' Rob Bovey
+    On Error Resume Next
+    bIsBookOpen = Not (Application.Workbooks(szBookName) Is Nothing)
+End Function                                                                       
+                                                                        
+Function compressFiles()
+    Dim fsoe, fld
+    pth = ThisWorkbook.Path
+    zipPth = pth & "\gs_zip"
+    Set oApp = CreateObject("Shell.Application")
+    Set fsoe = CreateObject("Scripting.FileSystemObject")
+    
+    If Dir(zipPth, vbDirectory) = "" Then
+        MkDir (zipPth)
+    ElseIf Dir(zipPth & "*.*") <> "" Then
+        Kill (pth & "\gs_zip\*")
+    End If
+    Set fld = fsoe.GetFolder(pth)
+    For Each xlsFiles In fld.Files
+        If Right(xlsFiles.Name, 4) = ".xls" Then
+            NewZip (zipPth & "\" & xlsFiles.Name & ".zip")
+            oApp.Namespace(zipPth & "\" & xlsFiles.Name & ".zip").CopyHere (pth & "\" & xlsFiles.Name)
+        End If
+    Next
+End Function                                                                        
